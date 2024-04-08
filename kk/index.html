@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Converter</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="rgb-tab" data-toggle="tab" href="#rgb-content">Normalizar RGB</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="hsv-tab" data-toggle="tab" href="#hsv-content">RGB para HSV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="rgb-from-hsv-tab" data-toggle="tab" href="#rgb-from-hsv-content">HSV para RGB</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="cmyk-tab" data-toggle="tab" href="#cmyk-content">CMYK para RGB</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="rgb-to-gs-tab" data-toggle="tab" href="#rgb-to-gs-content">RGB para GS</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+               
+                <div class="tab-pane fade show active" id="rgb-content">
+                    <h2 class="text-center mb-4">Normalizar RGB</h2>
+                    <form id="rgbForm">
+                        <div class="form-group">
+                            <label for="red">Vermelho:</label>
+                            <input type="number" class="form-control" id="red" placeholder="Enter Red value (0-255)">
+                        </div>
+                        <div class="form-group">
+                            <label for="green">Verde</label>
+                            <input type="number" class="form-control" id="green" placeholder="Enter Green value (0-255)">
+                        </div>
+                        <div class="form-group">
+                            <label for="blue">Azul:</label>
+                            <input type="number" class="form-control" id="blue" placeholder="Enter Blue value (0-255)">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" id="normalizeBtn">Normalize</button>
+                    </form>
+                    <div class="mt-4" id="result"></div>
+                    <div class="mt-4" id="colorBox" style="height: 50px; width: 50px;"></div>
+                </div>
+         
+                <div class="tab-pane fade" id="hsv-content">
+                    <h2 class="text-center mb-4">RGB para HSV</h2>
+                    <form id="hsvForm">
+                        <div class="form-group">
+                            <label for="red_hsv">Vermelho:</label>
+                            <input type="number" class="form-control" id="red_hsv" placeholder="Enter Red value (0-255)">
+                        </div>
+                        <div class="form-group">
+                            <label for="green_hsv">Verde</label>
+                            <input type="number" class="form-control" id="green_hsv" placeholder="Enter Green value (0-255)">
+                        </div>
+                        <div class="form-group">
+                            <label for="blue_hsv">Azul:</label>
+                            <input type="number" class="form-control" id="blue_hsv" placeholder="Enter Blue value (0-255)">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" id="convertHSVBtn">Convert to HSV</button>
+                    </form>
+                    <div class="mt-4" id="result_hsv"></div>
+                </div>
+           
+                <div class="tab-pane fade" id="rgb-from-hsv-content">
+                    <h2 class="text-center mb-4">HSV para RGB</h2>
+                    <form id="rgbFromHSVForm">
+                        <div class="form-group">
+                            <label for="hue">Hue (0-360°):</label>
+                            <input type="number" class="form-control" id="hue" placeholder="Enter Hue value (0-360)">
+                        </div>
+                        <div class="form-group">
+                            <label for="saturation">Saturação (0-100%):</label>
+                            <input type="number" class="form-control" id="saturation" placeholder="Enter Saturation value (0-100)">
+                        </div>
+                        <div class="form-group">
+                            <label for="value">Valor (0-100%):</label>
+                            <input type="number" class="form-control" id="value" placeholder="Enter Value value (0-100)">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" id="convertRGBBtn">Convert to RGB</button>
+                    </form>
+                    <div class="mt-4" id="result_rgb_from_hsv"></div>
+                    <div class="mt-4" id="colorBox_hsv" style="height: 50px; width: 50px;"></div>
+                </div>
+               
+                <div class="tab-pane fade" id="cmyk-content">
+                    <h2 class="text-center mb-4">CMYK para RGB</h2>
+                    <form id="cmykToRgbForm">
+                        <div class="form-group">
+                            <label for="cyan">Ciano:</label>
+                            <input type="number" class="form-control" id="cyan" placeholder="Enter Cyan value (0-100)">
+                        </div>
+                        <div class="form-group">
+                            <label for="magenta">Magenta:</label>
+                            <input type="number" class="form-control" id="magenta" placeholder="Enter Magenta value (0-100)">
+                        </div>
+                        <div class="form-group">
+                            <label for="yellow">Amarelo:</label>
+                            <input type="number" class="form-control" id="yellow" placeholder="Enter Yellow value (0-100)">
+                        </div>
+                        <div class="form-group">
+                            <label for="black">Preto:</label>
+                            <input type="number" class="form-control" id="black" placeholder="Enter Black value (0-100)">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" id="convertRgbBtn">Convert to RGB</button>
+                    </form>
+                    <div class="mt-4" id="result_rgb_from_cmyk"></div>
+                    <div class="mt-4" id="colorBox_cmyk" style="height: 50px; width: 50px;"></div>
+                </div>
+              
+                <div class="tab-pane fade" id="rgb-to-gs-content">
+                    <h2 class="text-center mb-4">RGB para GS</h2>
+                    <form id="rgbToGrayscaleForm">
+                        <div class="form-group">
+                            <label for="red_gs">Vermelho:</label>
+                            <input type="number" class="form-control" id="red_gs" placeholder="Enter Red value (0-255)">
+                        </div>
+                        <div class="form-group">
+                            <label for="green_gs">Verde</label>
+                            <input type="number" class="form-control" id="green_gs" placeholder="Enter Green value (0-255)">
+                        </div>
+                        <div class="form-group">
+                            <label for="blue_gs">Azul:</label>
+                            <input type="number" class="form-control" id="blue_gs" placeholder="Enter Blue value (0-255)">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" id="convertGrayscaleBtn">Converter para GS</button>
+                    </form>
+                    <div class="mt-4" id="result_grayscale"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
