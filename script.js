@@ -6,9 +6,9 @@ function hsvToRgb(h, s, v) {
         r = g = b = v;
         return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
-    h /= 60; // sector 0 to 5
+    h /= 60;
     i = Math.floor(h);
-    f = h - i; // factorial part of h
+    f = h - i;
     p = v * (1 - s);
     q = v * (1 - s * f);
     t = v * (1 - s * (1 - f));
@@ -38,7 +38,7 @@ function hsvToRgb(h, s, v) {
             g = p;
             b = v;
             break;
-        default: // case 5:
+        default:
             r = v;
             g = p;
             b = q;
@@ -69,7 +69,6 @@ document.getElementById('convertRGBBtn').addEventListener('click', convertToRGBF
 
 
 function rgbToCmyk(r, g, b) {
-    // Convert RGB to CMYK
     var c = 1 - (r / 255);
     var m = 1 - (g / 255);
     var y = 1 - (b / 255);
